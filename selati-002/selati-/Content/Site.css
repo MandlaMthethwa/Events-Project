@@ -1,0 +1,321 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    position: relative;
+    background-color: white;
+    font-weight: 300;
+    color: #777;
+}
+
+table {
+   
+    width: 100%;
+    border: 5px solid #ddd;
+}
+
+th, td, tr {
+    border: 3px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+input[type=text], input[type=password] {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #ddd;
+}
+
+input[type=submit] {
+    background-color: #003380;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-add {
+    background-color: #003380;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-update {
+    background-color: #003380;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin: 6px 2px;
+    cursor: pointer;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.button-delete {
+    background-color: #cc0000;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.button-view {
+    background-color: #0000b3;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.button-back {
+    background-color: #595959;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-signout {
+    padding: 5px 5px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.button-register {
+    background-color: #cc0000;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin: 8px 8px;
+    width: 100%;
+    cursor: pointer;    
+    font-size: 100%;
+    border-radius: 5px;
+}
+
+
+.heading {
+    color: #0000e6;
+}
+.form-header {
+    padding: 15px;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 10%;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+img {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+nav {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #2d2d30;
+}
+nav ul{
+    float:left;
+    padding:0;
+    margin:0;
+    position:relative;
+    list-style:none;
+}
+nav ul li{
+    display:inline-block;
+    float:left;
+    z-index:1;
+}
+nav a{
+    display:block;
+    padding:14px 15px;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    text-decoration:none;
+    font-family:Arial;
+}
+nav a:hover{
+    background-color:gray;
+    color:white;
+    display:block;
+}
+nav ul ul{
+    display:none;
+    position:absolute;
+    top:48px;
+}
+nav ul li:hover>ul{
+    display:inherit;
+}
+    nav ul ul li {
+        float: none;
+        display: list-item;
+        position: relative;
+        background-color: #2d2d30;
+        text-decoration: none;
+    }
+    .main {
+        background-color: #ffffff;
+        padding: 15px;
+        margin-right: 100px;
+        margin-left: 100px;
+        border: 1px solid #ddd;
+    }
+html {
+    height: 100%;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.header {
+    background-color: black;
+    padding: 10px;
+    margin-right: 110px;
+    margin-left: 100px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: white;
+    text-shadow: 5px 2px #222324, 2px 4px #222324, 3px 5px #222324;
+    margin: auto;
+    animation: fadeIn 25s;
+    font: 700 normal 2.5em 'tahoma';
+}
+
+
+.boldtext {
+    font-weight: bold;
+}
+.h1{
+
+}
+
+.profile-image {
+    float: left;
+    border: 1px solid red;
+}
+
+.profile-content {
+    float: left;
+    padding: 49px;
+    border: 1px solid red;
+}
+
+select {
+    border: 1px solid #ddd;
+    width: 32%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #ddd;
+}
+
+
+
+#logo {
+  width:250px;
+  height:100px;
+}
+.toggle ,[id^=drop]{
+    display:none;
+}
+
+@media all and (max-width: 600px) {
+
+    .menu{
+        display:none;
+
+    }
+    .toggle{
+        display:block;
+        background-color:grey;
+        color:white;
+        text-decoration:none;
+        padding:10px;
+      
+    }
+    .toggle:hover{
+        background-color:lightgrey;
+        color:black;
+    }
+    [id^=drop]:checked+ul{
+        display:block
+    }
+    nav ul li{
+        display:block;
+        width:100%;
+    }
+    nav ul ul{
+        float:none;
+        position:static;
+    }
+}
