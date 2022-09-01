@@ -1,8 +1,8 @@
 # Events-Project
 
+## Database needs a few modifications 
 
-
-if statements for Results and participant (decided with the ninja way so no need for this)
+-if statements for Results and participant (decided with the ninja way so no need for this)
 
 Each event must have results (When adding an event it must have it own page (View) - like ninja entry
 
