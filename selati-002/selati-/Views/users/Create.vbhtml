@@ -1,4 +1,4 @@
-﻿@ModelType selati_.user
+@ModelType selati_.user
 @Code
     ViewData("Title") = "Create"
     Layout = "~/Views/Shared/_Layout.vbhtml"
@@ -78,7 +78,7 @@ End Code
 
     </div>
 
-    <div class="form-group col-md-7">
+    <div class="form-group col-md-6">
 
         @Html.LabelFor(Function(model) model.regNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
@@ -113,17 +113,17 @@ End Code
     </div>
 
     <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.divisionID, "divisionID", htmlAttributes:=New With {.class = "control-label col-md-2"})
+        @Html.LabelFor(Function(model) model.divisionID, "distance (KM)", htmlAttributes:=New With {.class = "control-label col-md-2"})
         @Html.DropDownList("divisionID", Nothing, htmlAttributes:=New With {.class = "form-control"})
         @Html.ValidationMessageFor(Function(model) model.divisionID, "", New With {.class = "text-danger"})
     </div>
 
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-6">
             <input type="submit" value="Save" class="button-add" />
             <button class="button-back">
-                @Html.ActionLink("Back", "Index")
+                @Html.ActionLink("Back", "Index", "Eventts")
             </button>
         </div>
     </div>
