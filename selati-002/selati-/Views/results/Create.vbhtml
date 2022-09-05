@@ -63,7 +63,7 @@ End Code
                 @Html.ValidationMessageFor(Function(model) model.posGen, "", New With {.class = "text-danger"})
            
         </div>
-
+        
         <div class="form-group col-md-6">
             @Html.LabelFor(Function(model) model.category, htmlAttributes:=New With {.class = "control-label col-md-2"})
             
