@@ -1,4 +1,4 @@
-﻿@ModelType selati_.user
+@ModelType selati_.user
 @Code
     ViewData("Title") = "Create"
     Layout = "~/Views/Shared/_Layout.vbhtml"

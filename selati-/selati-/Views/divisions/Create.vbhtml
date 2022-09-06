@@ -37,10 +37,10 @@ End Code
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.eventt, "Event Name", htmlAttributes:=New With {.class = "control-label col-md-2"})
+            @Html.LabelFor(Function(model) model.eventt, "Event Name", htmlAttributes:= New With { .class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("event", Nothing, htmlAttributes:= New With { .class = "form-control" })
-                @Html.ValidationMessageFor(Function(model) model.eventt, "", New With {.class = "text-danger"})
+                @Html.ValidationMessageFor(Function(model) model.eventt, "", New With { .class = "text-danger" })
             </div>
         </div>
 
