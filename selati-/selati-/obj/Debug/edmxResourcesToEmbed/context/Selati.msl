@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="Model.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="companyID" ColumnName="companyID" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="companyUsername" ColumnName="companyUsername" />
+          <ScalarProperty Name="websiteURL" ColumnName="websiteURL" />
+          <ScalarProperty Name="companyRegNum" ColumnName="companyRegNum" />
+          <ScalarProperty Name="companyVATNum" ColumnName="companyVATNum" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="divisions">
+      <EntityTypeMapping TypeName="Model.division">
+        <MappingFragment StoreEntitySet="division">
+          <ScalarProperty Name="divisionID" ColumnName="divisionID" />
+          <ScalarProperty Name="distance" ColumnName="distance" />
+          <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+          <ScalarProperty Name="eventType" ColumnName="eventType" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+          <ScalarProperty Name="companyID" ColumnName="companyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventts">
+      <EntityTypeMapping TypeName="Model.eventt">
+        <MappingFragment StoreEntitySet="eventt">
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+          <ScalarProperty Name="eventName" ColumnName="eventName" />
+          <ScalarProperty Name="eventDate" ColumnName="eventDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="results">
+      <EntityTypeMapping TypeName="Model.result">
+        <MappingFragment StoreEntitySet="result">
+          <ScalarProperty Name="resultID" ColumnName="resultID" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="batch" ColumnName="batch" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="class" ColumnName="class" />
+          <ScalarProperty Name="raceNumber" ColumnName="raceNumber" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="posGen" ColumnName="posGen" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="posCat" ColumnName="posCat" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="initials" ColumnName="initials" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="medicalAidName" ColumnName="medicalAidName" />
+          <ScalarProperty Name="medicalAidNumber" ColumnName="medicalAidNumber" />
+          <ScalarProperty Name="clubName" ColumnName="clubName" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="town" ColumnName="town" />
+          <ScalarProperty Name="regNo" ColumnName="regNo" />
+          <ScalarProperty Name="tShirt" ColumnName="tShirt" />
+          <ScalarProperty Name="tsbPers" ColumnName="tsbPers" />
+          <ScalarProperty Name="tempNo" ColumnName="tempNo" />
+          <ScalarProperty Name="tipe" ColumnName="tipe" />
+          <ScalarProperty Name="bet" ColumnName="bet" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="receiptNo" ColumnName="receiptNo" />
+          <ScalarProperty Name="depDate" ColumnName="depDate" />
+          <ScalarProperty Name="divisionID" ColumnName="divisionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
