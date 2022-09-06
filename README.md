@@ -1,6 +1,6 @@
 # Events-Project
 
-## Database file includer=d (selati-final) 
+## Database file included (selati-final) 
 
 
 placeholders!!
