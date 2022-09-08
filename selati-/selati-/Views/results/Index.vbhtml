@@ -6,7 +6,7 @@
 End Code
 
 <h1 class="form-header">Results</h1>
-<h3> How did you stack up against the other participants</h3>
+<h3> How did you stack up against the other participants ?</h3>
 
 @Using Html.BeginForm()
     @<p>

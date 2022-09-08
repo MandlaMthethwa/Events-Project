@@ -1,14 +1,16 @@
-@ModelType selati_.user
+﻿@ModelType selati_.user
 @Code
     ViewData("Title") = "Create"
     Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
+@Imports Microsoft.AspNet.Identity
+
 <h2 class="form-header">Enter participant details below</h2>
 
-@Using (Html.BeginForm()) 
+@Using (Html.BeginForm())
     @Html.AntiForgeryToken()
-    
+
     @<div class="form-horizontal">
 
     <hr />
@@ -16,7 +18,7 @@ End Code
     <div class="form-group col-md-6">
         @Html.LabelFor(Function(model) model.firstName, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-        @Html.EditorFor(Function(model) model.firstName, New With {.htmlAttributes = New With {.class = "form-control"}})
+        @Html.EditorFor(Function(model) model.firstName, New With {.htmlAttributes = New With {.class = "form-control", .placeholder = "First Name"}})
         @Html.ValidationMessageFor(Function(model) model.firstName, "", New With {.class = "text-danger"})
 
     </div>
@@ -42,95 +44,98 @@ End Code
         @Html.EditorFor(Function(model) model.IDNumber, New With {.htmlAttributes = New With {.class = "form-control"}})
         @Html.ValidationMessageFor(Function(model) model.IDNumber, "", New With {.class = "text-danger"})
     </div>
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.emailAddress, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-        @Html.EditorFor(Function(model) model.emailAddress, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.emailAddress, "", New With {.class = "text-danger"})
+ @If Request.IsAuthenticated Then
+  @<div Class="form-group col-md-6">
+    @Html.LabelFor(Function(model) model.emailAddress, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-    </div>
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.medicalAidName, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.medicalAidName, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.medicalAidName, "", New With {.class = "text-danger"})
-    </div>
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.medicalAidNumber, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.medicalAidNumber, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.medicalAidNumber, "", New With {.class = "text-danger"})
-    </div>
-
-
-
-    <div class="form-group col-md-6">
-
-        @Html.LabelFor(Function(model) model.province, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.province, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.province, "", New With {.class = "text-danger"})
-    </div>
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.town, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.town, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.town, "", New With {.class = "text-danger"})
+    @Html.EditorFor(Function(model) model.emailAddress, New With {.htmlAttributes = New With {.class = "form-control", .value = User.Identity.GetUserName()}})
+    @Html.ValidationMessageFor(Function(model) model.emailAddress, "", New With {.class = "text-danger"})
 
     </div>
+ End If
 
-    <div class="form-group col-md-6">
-
-        @Html.LabelFor(Function(model) model.regNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
-
-        @Html.EditorFor(Function(model) model.regNo, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.regNo, "", New With {.class = "text-danger"})
-
-    </div>
-
-
-
-
-    <div class="form-group col-md-6">
-
-        @Html.LabelFor(Function(model) model.tempNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
-
-        @Html.EditorFor(Function(model) model.tempNo, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.tempNo, "", New With {.class = "text-danger"})
-
-    </div>
-
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.receiptNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.receiptNo, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.receiptNo, "", New With {.class = "text-danger"})
-    </div>
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.depDate, htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.EditorFor(Function(model) model.depDate, New With {.htmlAttributes = New With {.class = "form-control"}})
-        @Html.ValidationMessageFor(Function(model) model.depDate, "", New With {.class = "text-danger"})
-    </div>
-
-    <div class="form-group col-md-6">
-        @Html.LabelFor(Function(model) model.divisionID, "distance (KM)", htmlAttributes:=New With {.class = "control-label col-md-2"})
-        @Html.DropDownList("divisionID", Nothing, htmlAttributes:=New With {.class = "form-control"})
-        @Html.ValidationMessageFor(Function(model) model.divisionID, "", New With {.class = "text-danger"})
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-6">
-            <input type="submit" value="Save" class="button-add" />
-            <button class="button-back">
-                @Html.ActionLink("Back", "Index", "Eventts")
-            </button>
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.medicalAidName, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.medicalAidName, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.medicalAidName, "", New With {.class = "text-danger"})
         </div>
-    </div>
-</div>  End Using
+
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.medicalAidNumber, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.medicalAidNumber, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.medicalAidNumber, "", New With {.class = "text-danger"})
+        </div>
 
 
 
-@Section Scripts 
+        <div class="form-group col-md-6">
+
+@Html.LabelFor(Function(model) model.province, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.province, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.province, "", New With {.class = "text-danger"})
+        </div>
+
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.town, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.town, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.town, "", New With {.class = "text-danger"})
+
+        </div>
+
+        <div class="form-group col-md-6">
+
+@Html.LabelFor(Function(model) model.regNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
+
+@Html.EditorFor(Function(model) model.regNo, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.regNo, "", New With {.class = "text-danger"})
+
+        </div>
+
+
+
+
+        <div class="form-group col-md-6">
+
+@Html.LabelFor(Function(model) model.tempNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
+
+@Html.EditorFor(Function(model) model.tempNo, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.tempNo, "", New With {.class = "text-danger"})
+
+        </div>
+
+
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.receiptNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.receiptNo, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.receiptNo, "", New With {.class = "text-danger"})
+        </div>
+
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.depDate, htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.EditorFor(Function(model) model.depDate, New With {.htmlAttributes = New With {.class = "form-control"}})
+@Html.ValidationMessageFor(Function(model) model.depDate, "", New With {.class = "text-danger"})
+        </div>
+
+        <div class="form-group col-md-6">
+@Html.LabelFor(Function(model) model.divisionID, "distance (KM)", htmlAttributes:=New With {.class = "control-label col-md-2"})
+@Html.DropDownList("divisionID", Nothing, htmlAttributes:=New With {.class = "form-control"})
+@Html.ValidationMessageFor(Function(model) model.divisionID, "", New With {.class = "text-danger"})
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type = "submit" value="Save" class="button-add" />
+                <button class="button-back">
+@Html.ActionLink("Back", "Index", "Eventts")
+                </button>
+            </div>
+        </div>
+    </div>      End Using
+
+
+
+@Section Scripts
     @Scripts.Render("~/bundles/jqueryval")
 End Section

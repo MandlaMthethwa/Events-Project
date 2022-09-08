@@ -147,4 +147,6 @@ Partial Public Class user
     Public Property divisionID As Nullable(Of Integer)
 
     Public Overridable Property division As division
+
+
 End Class

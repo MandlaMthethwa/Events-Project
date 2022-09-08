@@ -4,13 +4,12 @@
     Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h2>Edit</h2>
+<h2 class="form-header">Update division</h2>
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
     
     @<div class="form-horizontal">
-        <h4>division</h4>
         <hr />
         @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
         @Html.HiddenFor(Function(model) model.divisionID)
@@ -40,15 +39,15 @@ End Code
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.event, "event", htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.eventt, "Event Name", htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.DropDownList("event", Nothing, htmlAttributes:= New With { .class = "form-control" })
-                @Html.ValidationMessageFor(Function(model) model.event, "", New With { .class = "text-danger" })
+                @Html.ValidationMessageFor(Function(model) model.eventt, "", New With {.class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.companyID, "companyID", htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.companyID, "Organiser", htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.DropDownList("companyID", Nothing, htmlAttributes:= New With { .class = "form-control" })
                 @Html.ValidationMessageFor(Function(model) model.companyID, "", New With { .class = "text-danger" })
@@ -58,14 +57,12 @@ End Code
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
+
+                <button class="button-back">@Html.ActionLink("Back", "Index")</button> 
             </div>
         </div>
     </div>
 End Using
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @Section Scripts 
     @Scripts.Render("~/bundles/jqueryval")

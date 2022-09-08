@@ -52,6 +52,7 @@ Namespace Controllers
         <HttpPost()>
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID")> ByVal user As user) As ActionResult
+
             If ModelState.IsValid Then
                 db.users.Add(user)
                 db.SaveChanges()

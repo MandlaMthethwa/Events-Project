@@ -48,7 +48,7 @@ End Code
     <div class="form-group col-md-6">
         @Html.LabelFor(Function(model) model.gender, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-        <select wire:model="gender" id="gender" name="gender">
+        <select class="form-control" wire:model="gender" id="gender" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
@@ -91,7 +91,7 @@ End Code
     <div class="form-group col-md-6">
         @Html.LabelFor(Function(model) model.category, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-        <select wire:model="category" id="category" name="category">
+        <select class="form-control" wire:model="category" id="category" name="category">
             <option value="<17">< 17</option>
             <option value="18-24">18 - 24</option>
             <option value="25-31">25 - 31</option>
@@ -112,7 +112,7 @@ End Code
     <div class="form-group col-md-6">
         @Html.LabelFor(Function(model) model.status, htmlAttributes:=New With {.class = "control-label col-md-2"})
 
-        <select wire:model="status" id="status" name="status">
+        <select class="form-control" wire:model="status" id="status" name="status">
             <option value="Finished">Finished</option>
             <option value="On going">On going</option>
         </select>
@@ -122,7 +122,6 @@ End Code
 
     <div class="form-group col-md-6">
         @Html.LabelFor(Function(model) model.time, htmlAttributes:=New With {.class = "control-label col-md-2"})
-
         @Html.EditorFor(Function(model) model.time, New With {.htmlAttributes = New With {.class = "form-control"}})
         @Html.ValidationMessageFor(Function(model) model.time, "", New With {.class = "text-danger"})
 
@@ -141,7 +140,7 @@ End Code
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="button-add" />
-            <button>
+            <button class="button-back">
                 @Html.ActionLink("Cancel", "adminIndex")
             </button>
         </div>
