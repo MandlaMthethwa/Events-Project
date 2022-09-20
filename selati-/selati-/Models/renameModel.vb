@@ -30,16 +30,17 @@ Partial Public Class company
 
 End Class
 Partial Public Class division
-    <DisplayName("Division (KM)")>
     Public Property divisionID As Integer
     <DisplayName("Distance")>
     Public Property distance As Integer
-    <DisplayName("Time of event")>
+    <DisplayName("Event Time")>
     <DataType(DataType.Time)>
     Public Property eventTime As System.TimeSpan
-    <DisplayName("Type of event")>
+    <DisplayName("Type of Event")>
     Public Property eventType As String
-    <DisplayName("Event Name")>
+    <DisplayName("Amount")>
+    Public Property amount As Double
+
     Public Property eventID As Integer
     Public Property companyID As Nullable(Of Integer)
 
@@ -49,7 +50,6 @@ Partial Public Class division
 
 End Class
 Partial Public Class eventt
-    <DisplayName("Event")>
     Public Property eventID As Integer
     <DisplayName("Event Name")>
     Public Property eventName As String
@@ -58,9 +58,9 @@ Partial Public Class eventt
     Public Property eventDate As Date
 
     Public Overridable Property companies As ICollection(Of company) = New HashSet(Of company)
-
     Public Overridable Property divisions As ICollection(Of division) = New HashSet(Of division)
     Public Overridable Property results As ICollection(Of result) = New HashSet(Of result)
+    Public Overridable Property users As ICollection(Of user) = New HashSet(Of user)
 
 End Class
 Partial Public Class result
@@ -110,8 +110,12 @@ Partial Public Class user
     Public Property initials As String
     <DisplayName("Identity Number")>
     Public Property IDNumber As String
-    <DisplayName("Email Address")>
+    <DisplayName("Participant Email Address")>
+    <DataType(DataType.EmailAddress)>
     Public Property emailAddress As String
+    <DisplayName("User Email Address")>
+    <DataType(DataType.EmailAddress)>
+    Public Property userEmail As String
 
 
     <DisplayName("Medical Aid Name")>
@@ -125,13 +129,13 @@ Partial Public Class user
     <DisplayName("Town")>
     Public Property town As String
     <DisplayName("Registration Number")>
-    Public Property regNo As Integer
+    Public Property regNo As Nullable(Of Integer)
     <DisplayName("Have a T-shirt?")>
     Public Property tShirt As String
     <DisplayName("tsb Person")>
     Public Property tsbPers As String
     <DisplayName("Temporary Number")>
-    Public Property tempNo As Integer
+    Public Property tempNo As Nullable(Of Integer)
     <DisplayName("Tipe")>
     Public Property tipe As String
     <DisplayName("finish time prediction")>
@@ -145,8 +149,10 @@ Partial Public Class user
     Public Property depDate As Nullable(Of Date)
     <DisplayName("Division (KM)")>
     Public Property divisionID As Nullable(Of Integer)
+    Public Property eventID As Integer
+
 
     Public Overridable Property division As division
 
-
+    Public Overridable Property eventt As eventt
 End Class

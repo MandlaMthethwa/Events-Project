@@ -7,7 +7,10 @@ End Code
 <h2 class="form-header">Divisions</h2>
 
 <p>
-     <button class="button-add">@Html.ActionLink("Add a new division", "Create") </button>
+    <button class="button-add">@Html.ActionLink("Add a new division", "Create") </button>
+    <button class="button-back">
+        @Html.ActionLink("Back to Menu", "homePage", "Admins")
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -56,4 +59,3 @@ End Code
     Next
 
 </table>
-<button class="btn btn-default">@Html.ActionLink("Back", "homePage", "Admins")</button>

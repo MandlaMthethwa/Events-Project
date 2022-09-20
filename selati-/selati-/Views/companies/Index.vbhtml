@@ -1,13 +1,16 @@
 ﻿@ModelType IEnumerable(Of selati_.company)
 @Code
-ViewData("Title") = "Index"
-Layout = "~/Views/Shared/_Layout.vbhtml"
+    ViewData("Title") = "Manage Organiser"
+    Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
 <h2 class="form-header">Manage Organisers</h2>
 
 <button class="button-add">
     @Html.ActionLink("Add organiser", "Create")
+</button>
+<button class="button-back">
+    @Html.ActionLink("Back to Menu", "homePage", "Admins")
 </button>
 <table class="table">
     <tr>
@@ -28,7 +31,7 @@ End Code
         </th>
        
         <th>
-            @Html.DisplayNameFor(Function(model) model.eventt.eventName)
+        Event Name       
         </th>
         <th> Action</th>
     </tr>

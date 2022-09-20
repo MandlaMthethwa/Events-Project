@@ -1,18 +1,21 @@
 ﻿@ModelType IEnumerable(Of selati_.result)
 
 @Code
-    ViewData("Title") = "Results"
+    ViewData("Title") = "My Results"
     Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h1 class="form-header">Results</h1>
+<h2 class="form-header">Results</h2>
 <h3> How did you stack up against the other participants ?</h3>
 
 @Using Html.BeginForm()
     @<p>
-        Find by First Name(s) or Surname: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
+    Find by First Name(s) or Surname: @Html.TextBox("SearchString")
+    <input type="submit" value="Search" />
+    <button class="btn button-back">
+        @Html.ActionLink("Refresh", "Index")
+    </button>
+</p>
 End Using
 
 <table class="table">
@@ -110,4 +113,4 @@ End Using
 
 </table>
 
-<p> <a class="button-back" @Html.ActionLink("Back", "Index", "Home") </a></p>
+<p ><a class="button-back" @Html.ActionLink("Back", "Index", "Home")</a> </p>

@@ -25,6 +25,7 @@
           <Property Name="distance" Type="int" Nullable="false" />
           <Property Name="eventTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="eventType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
           <Property Name="eventID" Type="int" Nullable="false" />
           <Property Name="companyID" Type="int" />
         </EntityType>
@@ -66,21 +67,23 @@
           <Property Name="initials" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="IDNumber" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="emailAddress" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="userEmail" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="medicalAidName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="medicalAidNumber" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="clubName" Type="varchar" MaxLength="20" />
           <Property Name="province" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="town" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="regNo" Type="int" Nullable="false" />
+          <Property Name="regNo" Type="int" />
           <Property Name="tShirt" Type="varchar" MaxLength="5" />
           <Property Name="tsbPers" Type="varchar" MaxLength="20" />
-          <Property Name="tempNo" Type="int" Nullable="false" />
+          <Property Name="tempNo" Type="int" />
           <Property Name="tipe" Type="varchar" MaxLength="20" />
           <Property Name="bet" Type="varchar" MaxLength="20" />
           <Property Name="paid" Type="int" />
-          <Property Name="receiptNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="receiptNo" Type="varchar" MaxLength="20" />
           <Property Name="depDate" Type="date" />
           <Property Name="divisionID" Type="int" />
+          <Property Name="eventID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_company_eventt">
           <End Role="eventt" Type="Self.eventt" Multiplicity="0..1" />
@@ -94,7 +97,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_division_company1">
+        <Association Name="FK_division_company">
           <End Role="company" Type="Self.company" Multiplicity="0..1" />
           <End Role="division" Type="Self.division" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_division_eventt1">
+        <Association Name="FK_division_eventt">
           <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
           <End Role="division" Type="Self.division" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,6 +145,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_user_eventt">
+          <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventt">
+              <PropertyRef Name="eventID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="eventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="division" EntityType="Self.division" Schema="dbo" store:Type="Tables" />
@@ -152,11 +167,11 @@
             <End Role="eventt" EntitySet="eventt" />
             <End Role="company" EntitySet="company" />
           </AssociationSet>
-          <AssociationSet Name="FK_division_company1" Association="Self.FK_division_company1">
+          <AssociationSet Name="FK_division_company" Association="Self.FK_division_company">
             <End Role="company" EntitySet="company" />
             <End Role="division" EntitySet="division" />
           </AssociationSet>
-          <AssociationSet Name="FK_division_eventt1" Association="Self.FK_division_eventt1">
+          <AssociationSet Name="FK_division_eventt" Association="Self.FK_division_eventt">
             <End Role="eventt" EntitySet="eventt" />
             <End Role="division" EntitySet="division" />
           </AssociationSet>
@@ -166,6 +181,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_user_division" Association="Self.FK_user_division">
             <End Role="division" EntitySet="division" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_eventt" Association="Self.FK_user_eventt">
+            <End Role="eventt" EntitySet="eventt" />
             <End Role="user" EntitySet="user" />
           </AssociationSet>
         </EntityContainer>
@@ -186,7 +205,7 @@
           <Property Name="companyVATNum" Type="Int32" Nullable="false" />
           <Property Name="eventID" Type="Int32" />
           <NavigationProperty Name="eventt" Relationship="Self.FK_company_eventt" FromRole="company" ToRole="eventt" />
-          <NavigationProperty Name="divisions" Relationship="Self.FK_division_company1" FromRole="company" ToRole="division" />
+          <NavigationProperty Name="divisions" Relationship="Self.FK_division_company" FromRole="company" ToRole="division" />
         </EntityType>
         <EntityType Name="division">
           <Key>
@@ -196,10 +215,11 @@
           <Property Name="distance" Type="Int32" Nullable="false" />
           <Property Name="eventTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="eventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="eventID" Type="Int32" Nullable="false" />
           <Property Name="companyID" Type="Int32" />
-          <NavigationProperty Name="company" Relationship="Self.FK_division_company1" FromRole="division" ToRole="company" />
-          <NavigationProperty Name="eventt" Relationship="Self.FK_division_eventt1" FromRole="division" ToRole="eventt" />
+          <NavigationProperty Name="company" Relationship="Self.FK_division_company" FromRole="division" ToRole="company" />
+          <NavigationProperty Name="eventt" Relationship="Self.FK_division_eventt" FromRole="division" ToRole="eventt" />
           <NavigationProperty Name="users" Relationship="Self.FK_user_division" FromRole="division" ToRole="user" />
         </EntityType>
         <EntityType Name="eventt">
@@ -210,8 +230,9 @@
           <Property Name="eventName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="eventDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="companies" Relationship="Self.FK_company_eventt" FromRole="eventt" ToRole="company" />
-          <NavigationProperty Name="divisions" Relationship="Self.FK_division_eventt1" FromRole="eventt" ToRole="division" />
+          <NavigationProperty Name="divisions" Relationship="Self.FK_division_eventt" FromRole="eventt" ToRole="division" />
           <NavigationProperty Name="results" Relationship="Self.FK_result_eventt1" FromRole="eventt" ToRole="result" />
+          <NavigationProperty Name="users" Relationship="Self.FK_user_eventt" FromRole="eventt" ToRole="user" />
         </EntityType>
         <EntityType Name="result">
           <Key>
@@ -244,22 +265,25 @@
           <Property Name="initials" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emailAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="medicalAidName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="medicalAidNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="clubName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="province" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="town" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="regNo" Type="Int32" Nullable="false" />
+          <Property Name="regNo" Type="Int32" />
           <Property Name="tShirt" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="tsbPers" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="tempNo" Type="Int32" Nullable="false" />
+          <Property Name="tempNo" Type="Int32" />
           <Property Name="tipe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="bet" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="paid" Type="Int32" />
-          <Property Name="receiptNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="receiptNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="depDate" Type="DateTime" Precision="0" />
           <Property Name="divisionID" Type="Int32" />
+          <Property Name="eventID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="division" Relationship="Self.FK_user_division" FromRole="user" ToRole="division" />
+          <NavigationProperty Name="eventt" Relationship="Self.FK_user_eventt" FromRole="user" ToRole="eventt" />
         </EntityType>
         <Association Name="FK_company_eventt">
           <End Role="eventt" Type="Self.eventt" Multiplicity="0..1" />
@@ -273,7 +297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_division_company1">
+        <Association Name="FK_division_company">
           <End Role="company" Type="Self.company" Multiplicity="0..1" />
           <End Role="division" Type="Self.division" Multiplicity="*" />
           <ReferentialConstraint>
@@ -285,7 +309,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_division_eventt1">
+        <Association Name="FK_division_eventt">
           <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
           <End Role="division" Type="Self.division" Multiplicity="*" />
           <ReferentialConstraint>
@@ -321,6 +345,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_user_eventt">
+          <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventt">
+              <PropertyRef Name="eventID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="eventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="companies" EntityType="Self.company" />
           <EntitySet Name="divisions" EntityType="Self.division" />
@@ -331,11 +367,11 @@
             <End Role="eventt" EntitySet="eventts" />
             <End Role="company" EntitySet="companies" />
           </AssociationSet>
-          <AssociationSet Name="FK_division_company1" Association="Self.FK_division_company1">
+          <AssociationSet Name="FK_division_company" Association="Self.FK_division_company">
             <End Role="company" EntitySet="companies" />
             <End Role="division" EntitySet="divisions" />
           </AssociationSet>
-          <AssociationSet Name="FK_division_eventt1" Association="Self.FK_division_eventt1">
+          <AssociationSet Name="FK_division_eventt" Association="Self.FK_division_eventt">
             <End Role="eventt" EntitySet="eventts" />
             <End Role="division" EntitySet="divisions" />
           </AssociationSet>
@@ -346,6 +382,10 @@
           <AssociationSet Name="FK_result_eventt1" Association="Self.FK_result_eventt1">
             <End Role="eventt" EntitySet="eventts" />
             <End Role="result" EntitySet="results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_eventt" Association="Self.FK_user_eventt">
+            <End Role="eventt" EntitySet="eventts" />
+            <End Role="user" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -374,6 +414,7 @@
                 <ScalarProperty Name="distance" ColumnName="distance" />
                 <ScalarProperty Name="eventTime" ColumnName="eventTime" />
                 <ScalarProperty Name="eventType" ColumnName="eventType" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="eventID" ColumnName="eventID" />
                 <ScalarProperty Name="companyID" ColumnName="companyID" />
               </MappingFragment>
@@ -418,6 +459,7 @@
                 <ScalarProperty Name="initials" ColumnName="initials" />
                 <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
                 <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
                 <ScalarProperty Name="medicalAidName" ColumnName="medicalAidName" />
                 <ScalarProperty Name="medicalAidNumber" ColumnName="medicalAidNumber" />
                 <ScalarProperty Name="clubName" ColumnName="clubName" />
@@ -433,6 +475,7 @@
                 <ScalarProperty Name="receiptNo" ColumnName="receiptNo" />
                 <ScalarProperty Name="depDate" ColumnName="depDate" />
                 <ScalarProperty Name="divisionID" ColumnName="divisionID" />
+                <ScalarProperty Name="eventID" ColumnName="eventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

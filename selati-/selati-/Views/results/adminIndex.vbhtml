@@ -8,13 +8,19 @@ End Code
 
 
 <p>
-    <button class="button-add">@Html.ActionLink("Enter results", "Create", New With {.id = 1}, New With {.style = "color:white; font-family:Montserrat, sans-serif;"}) </button>
+    <button class="button-add">@Html.ActionLink("Enter results", "Create") </button>
+    <button class="button-back">
+        @Html.ActionLink("Back to Menu", "homePage", "Admins")
+    </button>
 </p>
 @Using Html.BeginForm()
     @<p>
-        Find by First Name(s) or Surname: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
+    Find by First Name(s) or Surname: @Html.TextBox("SearchString")
+    <input type="submit" value="Search" />
+    <button class="btn button-back">
+        @Html.ActionLink("Refresh", "adminIndex")
+    </button>
+</p>
 End Using
 <table class="table">
     <tr>
@@ -117,4 +123,3 @@ End Using
     Next
 
 </table>
-<button class="btn btn-default">@Html.ActionLink("Back", "homePage", "Admins")</button>

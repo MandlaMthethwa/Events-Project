@@ -21,6 +21,7 @@
           <ScalarProperty Name="distance" ColumnName="distance" />
           <ScalarProperty Name="eventTime" ColumnName="eventTime" />
           <ScalarProperty Name="eventType" ColumnName="eventType" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="eventID" ColumnName="eventID" />
           <ScalarProperty Name="companyID" ColumnName="companyID" />
         </MappingFragment>
@@ -65,6 +66,7 @@
           <ScalarProperty Name="initials" ColumnName="initials" />
           <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
           <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
           <ScalarProperty Name="medicalAidName" ColumnName="medicalAidName" />
           <ScalarProperty Name="medicalAidNumber" ColumnName="medicalAidNumber" />
           <ScalarProperty Name="clubName" ColumnName="clubName" />
@@ -80,6 +82,7 @@
           <ScalarProperty Name="receiptNo" ColumnName="receiptNo" />
           <ScalarProperty Name="depDate" ColumnName="depDate" />
           <ScalarProperty Name="divisionID" ColumnName="divisionID" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

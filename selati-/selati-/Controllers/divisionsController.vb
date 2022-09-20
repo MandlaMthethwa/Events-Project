@@ -40,7 +40,7 @@ Namespace Controllers
         ' GET: divisions/Create
         Function Create() As ActionResult
             ViewBag.companyID = New SelectList(db.companies, "companyID", "companyName")
-            ViewBag.event = New SelectList(db.eventts, "eventID", "eventName")
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName")
             Return View()
         End Function
 
@@ -56,7 +56,7 @@ Namespace Controllers
                 Return RedirectToAction("adminIndex")
             End If
             ViewBag.companyID = New SelectList(db.companies, "companyID", "companyName", division.companyID)
-            ViewBag.event = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
             Return View(division)
         End Function
 
@@ -69,9 +69,8 @@ Namespace Controllers
             If IsNothing(division) Then
                 Return HttpNotFound()
             End If
-            ViewBag.companyID = New SelectList(db.companies, "companyID", "companyName", division.companyID
-                                               )
-            ViewBag.event = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
+            ViewBag.companyID = New SelectList(db.companies, "companyID", "companyName", division.companyID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
             Return View(division)
         End Function
 
@@ -87,7 +86,7 @@ Namespace Controllers
                 Return RedirectToAction("adminIndex")
             End If
             ViewBag.companyID = New SelectList(db.companies, "companyID", "companyName", division.companyID)
-            ViewBag.event = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", division.eventID)
             Return View(division)
         End Function
 

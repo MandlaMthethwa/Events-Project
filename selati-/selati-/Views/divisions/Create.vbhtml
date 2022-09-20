@@ -1,6 +1,6 @@
 ﻿@ModelType selati_.division
 @Code
-    ViewData("Title") = "Create"
+    ViewData("Title") = "Add division"
     Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 <h2 class="form-header">Add a division</h2>
@@ -39,7 +39,7 @@ End Code
         <div class="form-group">
             @Html.LabelFor(Function(model) model.eventt, "Event Name", htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("event", Nothing, htmlAttributes:= New With { .class = "form-control" })
+                @Html.DropDownList("eventID", Nothing, htmlAttributes:=New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(model) model.eventt, "", New With {.class = "text-danger"})
             </div>
         </div>
@@ -55,14 +55,13 @@ End Code
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <button class="btn button-back"> @Html.ActionLink("Back ", "adminIndex")</button>
             </div>
         </div>
     </div>
 End Using
 
-<div>
-    <button class="btn btn-default"> @Html.ActionLink("Back ", "adminIndex")</button>
-</div>
+
 
 @Section Scripts 
     @Scripts.Render("~/bundles/jqueryval")

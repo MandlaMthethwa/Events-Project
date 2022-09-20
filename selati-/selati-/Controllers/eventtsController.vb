@@ -53,7 +53,7 @@ Namespace Controllers
             If ModelState.IsValid Then
                 db.eventts.Add(eventt)
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Return RedirectToAction("adminIndex")
             End If
             Return View(eventt)
         End Function
@@ -79,7 +79,7 @@ Namespace Controllers
             If ModelState.IsValid Then
                 db.Entry(eventt).State = EntityState.Modified
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Return RedirectToAction("adminIndex")
             End If
             Return View(eventt)
         End Function
@@ -104,7 +104,7 @@ Namespace Controllers
             Dim eventt As eventt = db.eventts.Find(id)
             db.eventts.Remove(eventt)
             db.SaveChanges()
-            Return RedirectToAction("Index")
+            Return RedirectToAction("adminIndex")
         End Function
 
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)

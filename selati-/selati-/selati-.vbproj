@@ -282,6 +282,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="context\selati.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>selati.edmx</DependentUpon>
@@ -380,6 +381,8 @@
     <Content Include="Views\divisions\adminIndex.vbhtml" />
     <Content Include="Views\results\adminIndex.vbhtml" />
     <Content Include="Views\eventts\BouldersMarathon.vbhtml" />
+    <Content Include="Views\results\allResults.vbhtml" />
+    <Content Include="Views\results\thirstResults.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

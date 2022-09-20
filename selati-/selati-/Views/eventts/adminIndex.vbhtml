@@ -7,8 +7,12 @@ End Code
 <h2 class="form-header">Events</h2>
 
 <p>
-   <button class="button-add"> @Html.ActionLink("Add a new event", "Create") </button>
+    <button class="button-add"> @Html.ActionLink("Add a new event", "Create") </button>
+    <button class="button-back">
+        @Html.ActionLink("Back to Menu", "homePage", "Admins")
+    </button>
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -17,7 +21,7 @@ End Code
         <th>
             @Html.DisplayNameFor(Function(model) model.eventDate)
         </th>
-        
+        <th>Action</th>
     </tr>
 
     @For Each item In Model
@@ -36,4 +40,3 @@ End Code
     Next
 
 </table>
-<button class="btn btn-default">@Html.ActionLink("Back", "homePage", "Admins")</button>

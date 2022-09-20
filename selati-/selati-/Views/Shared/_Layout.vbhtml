@@ -1,50 +1,65 @@
 ﻿@Imports Microsoft.AspNet.Identity
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title  Selati Marathon</title>
+    <title>@ViewBag.Title - Pronto</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+   
 </head>
 <body>
-    @If Request.IsAuthenticated Then
 
-        @<div class="user" style="color:black">
-    <img src="../images/pp.jpg" />
-    @(User.Identity.GetUserName())
-</div>
-    End If
-    <div>
+    <div class="row">
 
+        <ul style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),Url(../images/logoback.jpg);">
+
+            @*<li> <img src="../images/logo.png" alt=" Let move" class="logo"></li>*@
+            <li>
+                @If Request.IsAuthenticated Then
+                    @<div class="user" style="color:white">
+
+                        <img src="../images/pp.jpg" style="background-color: none; border-radius: 45%;" />
+
+                        @(User.Identity.GetUserName())
+                    </div>
+                End If
+            </li>
+            <li><h2 style="color: lightblue"> "Motivation is what gets you started. Habit is what keeps you going."</h2></li>
+        </ul>
+        
+            
         <nav>
 
-            <label class="toggle" for=" drop"> Menu </label>
-            <input type="checkbox" id="drop" />
-
-            <ul class="menu">
+            <ul>
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink(" View Results", "Index", "Results")</li>
-                <li><a href=" @Url.Action("homePage", "Admins")">Admin</a></li>
+
+                @If User.Identity.GetUserName() = "admin@pronto.ac.za" Then
+                    @<li><a href=" @Url.Action("homePage", "Admins")">Manage Here</a></li>
+                End If
+                @If Request.IsAuthenticated And User.Identity.GetUserName() <> "admin@pronto.ac.za" Then
+
+
+                    @<li>@Html.ActionLink("Events", "Index", "Eventts")</li>
+                    @<li>
+                        <a href="#">Results</a>
+                        <ul>
+                            <li>@Html.ActionLink("My Results", "Index", "Results") </li>
+                            <li>@Html.ActionLink("All Results", "allResults", "Results") </li>
+                        </ul>
+                    </li>
+                    @<li>@Html.ActionLink("Your Participants", "Index", "Users")</li>
+                End If
             </ul>
 
 
             @If Request.IsAuthenticated Then
                 @Using Html.BeginForm("LogOff", "Account", FormMethod.Post, New With {.id = "logoutForm", .Class = "menu navbar-right"})
                     @Html.AntiForgeryToken()
-                    @<ul class="menu">
-
-
-
-
-
-                        <li>@Html.ActionLink(" View Events", "Index", "Eventts")</li>
-                        <li>@Html.ActionLink(" View Your Participants", "Index", "Users")</li>
-
+                    @<ul>
                         <li>
-                            <a href="" @Html.ActionLink("Update your password ", "ChangePassword", "Manage", New With {.id = 1}, New With {.Class = "navbar-left"})
+                            @Html.ActionLink("Update your password ", "ChangePassword", "Manage")
                         </li>
                         <li><a href="javascript:document.getElementById('logoutForm').submit()" , style="color:white;background-color:black">Log off</a></li>
                     </ul>
@@ -52,14 +67,15 @@
                 End Using
             Else
                 @<ul class="menu navbar-right">
-                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues:=Nothing, htmlAttributes:=New With {.id = "registerLink"})</li>
-                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues:=Nothing, htmlAttributes:=New With {.id = "loginLink"})</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues:=Nothing, htmlAttributes:=New With {.id = "registerLink", .class = "btn button-add"})</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues:=Nothing, htmlAttributes:=New With {.id = "loginLink", .class = "btn button-add"})</li>
                 </ul>
             End If
 
-
         </nav>
     </div>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -69,5 +85,24 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required:=False)
+
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="@Url.Action("About", "Home")">About us</a></li>
+                  
+                    <li>@Html.ActionLink("Events", "Index", "Eventts")</li>
+                    <li><a href="#">Results</a></li>
+
+                </ul>
+            </div>
+            
+        </div>
+        <div class="row">
+           
+            <p>&copy; @DateTime.Now.Year Copyright All rights Reseverd</p>            
+        </div>
+    </footer>
 </body>
 </html>

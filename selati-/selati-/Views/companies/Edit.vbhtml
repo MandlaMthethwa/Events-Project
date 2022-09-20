@@ -65,14 +65,15 @@ End Code
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
+                <button class="btn button-back">
+                    @Html.ActionLink("Back", "Index")
+                </button>
             </div>
         </div>
     </div>
 End Using
 
-<button class="button-back">
-    @Html.ActionLink("Back", "Index")
-</button>
+
 
 @Section Scripts 
     @Scripts.Render("~/bundles/jqueryval")

@@ -40,6 +40,19 @@ Namespace Controllers
             Return View(results.ToList())
         End Function
 
+        Function allResults() As ActionResult
+
+            Return View()
+        End Function
+
+        Function thirstResults(searchString As String) As ActionResult
+            Dim results = From s In db.results.Where(Function(f) f.eventID = 2) Select s
+            If Not String.IsNullOrEmpty(searchString) Then
+                results = results.Where(Function(s) s.firstName.ToUpper().Contains(searchString.ToUpper()) _
+                                        Or s.lastName.ToUpper().Contains(searchString.ToUpper()))
+            End If
+            Return View(results.ToList())
+        End Function
         ' GET: results/Details/5
         Function Details(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then

@@ -10,14 +10,15 @@ End Code
 
 
 <div class="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3">
-    <a href="@Url.Action("BouldersMarathon")" class="relative flex flex-col h-full pb-4 overflow-hidden bg-white border shadow-md border-cool-gray-100 sm:rounded-lg group focus:outline-none" wire:key="event-77528" id="event-77528" x-on:click="storeScrollPosition('event-77528')">
-        <div class="w-full aspect-h-2 aspect-w-3">
-            <img src="https://www.roadrunning.co.za/file/edition/Boulders-Marathon-25km-2022/logo/Boulders_Marathon_2022.jpg" class="object-fit" alt="" title="" loading="lazy">
+    <!--New Event-->
+    <a href="@Url.Action("BouldersMarathon")">
+        <div >
+            <img src="https://i.ibb.co/FKVR422/Boulders-Marathon-2022.jpg">
         </div>
         <div class="flex flex-col items-start flex-grow p-4">
-            <h2 class="text-xl font-extrabold leading-snug text-gray-800">
+            <h3 class="text-xl font-extrabold leading-snug text-gray-800">
                 Boulders Marthon 2022
-            </h2>
+            </h3>
             <div class="mt-3">
                 <div class="flex items-center justify-start">
                     <svg viewBox="0 0 20 20" fill="currentColor" class="flex-shrink-0 w-5 h-5 -ml-px text-red-400"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
@@ -39,11 +40,11 @@ End Code
                 </div>
                 <div class="flex items-center justify-center px-4 mx-4 leading-10 text-white transition-colors duration-150 ease-out bg-gray-800 rounded-md hover:bg-red-800 focus:bg-red-700 focus:outline-none">
                     <span class="font-bold tracking-wide">View Event</span>
-                    <svg class="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
+
                 </div>
-                
+
             </div>
         </div>
-        </div>
+        <!--New Event-->
+
+</div>

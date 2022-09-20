@@ -41,6 +41,8 @@ Namespace Controllers
         ' GET: admins/Create
         Function Create() As ActionResult
             ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance")
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName")
+
             Return View()
         End Function
         Function homePage() As ActionResult
@@ -52,13 +54,15 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID")> ByVal user As user) As ActionResult
+        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,eventID,divisionID")> ByVal user As user) As ActionResult
             If ModelState.IsValid Then
                 db.users.Add(user)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
+
             Return View(user)
         End Function
 
@@ -71,7 +75,9 @@ Namespace Controllers
             If IsNothing(user) Then
                 Return HttpNotFound()
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
+
             Return View(user)
         End Function
 
@@ -80,13 +86,15 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID")> ByVal user As user) As ActionResult
+        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,,eventID,divisionID")> ByVal user As user) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(user).State = EntityState.Modified
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
+
             Return View(user)
         End Function
 

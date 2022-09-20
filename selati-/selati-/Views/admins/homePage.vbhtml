@@ -6,11 +6,11 @@ End Code
 
 <h2 class="form-header">Welcome Admin.</h2>
 <div>
-    <p><a class="btn btn-default" @Html.ActionLink("Manage Participants", "Index", "Admins") </a></p> </br>
-    <p><a class="btn btn-default" @Html.ActionLink("Enter Events", "adminIndex", "Eventts") </a></p> </br>
-    <p><a class="btn btn-default" @Html.ActionLink("Add Divions", "adminIndex", "Divisions") </a></p> </br>
-    <p><a class="btn btn-default" @Html.ActionLink("Manage Results", "adminIndex", "Results") </a></p> </br> </br>
-    <p><a class="btn btn-default" @Html.ActionLink("Add Organizer", "Index", "Companies") </a></p> </br>
+    <p><a class="btn button-view" @Html.ActionLink("Manage Participants", "Index", "Admins") </a></p> </br>
+    <p><a class="btn button-view" @Html.ActionLink("Enter Events", "adminIndex", "Eventts") </a></p> </br>
+    <p><a class="btn button-view" @Html.ActionLink("Add Divions", "adminIndex", "Divisions") </a></p> </br>
+    <p><a class="btn button-view" @Html.ActionLink("Add Organizer", "Index", "Companies") </a></p> </br>
+    <p><a class="btn button-view" @Html.ActionLink("Manage Results", "adminIndex", "Results") </a></p> </br> </br>
 
 </div>
 

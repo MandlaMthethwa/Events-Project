@@ -34,6 +34,8 @@ End Code
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="button-register" value="Register" />
+            <button class="button-add"> @Html.ActionLink("Already have account?", "Login") </button>
+
         </div>
     </div>
     </text>

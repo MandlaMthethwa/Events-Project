@@ -9,11 +9,17 @@ End Code
 <button class="button-add">
     @Html.ActionLink("Add a new participant", "Create", New With {.id = 1}, New With {.style = "color:white;"})
 </button>
+<button class="btn button-back">
+    @Html.ActionLink("Back to menu", "homePage")
+</button>
 @Using Html.BeginForm()
     @<p>
-        Find by First Name(s) or Surname: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
+    Find by First Name(s) or Surname: @Html.TextBox("SearchString")
+    <input type="submit" value="Search" />
+    <button class="btn button-back">
+        @Html.ActionLink("Refresh", "Index")
+    </button>
+</p>
 End Using
 <table class="table">
     <tr>
@@ -142,6 +148,3 @@ End Using
     Next
 
 </table>
-<button class="button-back">
-    @Html.ActionLink("Back", "homePage")
-</button>

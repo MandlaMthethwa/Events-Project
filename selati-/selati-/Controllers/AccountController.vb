@@ -363,7 +363,7 @@ Public Class AccountController
     <ValidateAntiForgeryToken>
     Public Function LogOff() As ActionResult
         AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie)
-        Return RedirectToAction("Index", "Home")
+        Return RedirectToAction("Login")
     End Function
 
     '

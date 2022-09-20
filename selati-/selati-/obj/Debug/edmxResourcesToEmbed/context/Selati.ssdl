@@ -20,6 +20,7 @@
     <Property Name="distance" Type="int" Nullable="false" />
     <Property Name="eventTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="eventType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
     <Property Name="eventID" Type="int" Nullable="false" />
     <Property Name="companyID" Type="int" />
   </EntityType>
@@ -61,21 +62,23 @@
     <Property Name="initials" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="IDNumber" Type="varchar" MaxLength="13" Nullable="false" />
     <Property Name="emailAddress" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userEmail" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="medicalAidName" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="medicalAidNumber" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="clubName" Type="varchar" MaxLength="20" />
     <Property Name="province" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="town" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="regNo" Type="int" Nullable="false" />
+    <Property Name="regNo" Type="int" />
     <Property Name="tShirt" Type="varchar" MaxLength="5" />
     <Property Name="tsbPers" Type="varchar" MaxLength="20" />
-    <Property Name="tempNo" Type="int" Nullable="false" />
+    <Property Name="tempNo" Type="int" />
     <Property Name="tipe" Type="varchar" MaxLength="20" />
     <Property Name="bet" Type="varchar" MaxLength="20" />
     <Property Name="paid" Type="int" />
-    <Property Name="receiptNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="receiptNo" Type="varchar" MaxLength="20" />
     <Property Name="depDate" Type="date" />
     <Property Name="divisionID" Type="int" />
+    <Property Name="eventID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_company_eventt">
     <End Role="eventt" Type="Self.eventt" Multiplicity="0..1" />
@@ -89,7 +92,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_division_company1">
+  <Association Name="FK_division_company">
     <End Role="company" Type="Self.company" Multiplicity="0..1" />
     <End Role="division" Type="Self.division" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +104,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_division_eventt1">
+  <Association Name="FK_division_eventt">
     <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
     <End Role="division" Type="Self.division" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,6 +140,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_user_eventt">
+    <End Role="eventt" Type="Self.eventt" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eventt">
+        <PropertyRef Name="eventID" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="eventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="division" EntityType="Self.division" Schema="dbo" store:Type="Tables" />
@@ -147,11 +162,11 @@
       <End Role="eventt" EntitySet="eventt" />
       <End Role="company" EntitySet="company" />
     </AssociationSet>
-    <AssociationSet Name="FK_division_company1" Association="Self.FK_division_company1">
+    <AssociationSet Name="FK_division_company" Association="Self.FK_division_company">
       <End Role="company" EntitySet="company" />
       <End Role="division" EntitySet="division" />
     </AssociationSet>
-    <AssociationSet Name="FK_division_eventt1" Association="Self.FK_division_eventt1">
+    <AssociationSet Name="FK_division_eventt" Association="Self.FK_division_eventt">
       <End Role="eventt" EntitySet="eventt" />
       <End Role="division" EntitySet="division" />
     </AssociationSet>
@@ -161,6 +176,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_user_division" Association="Self.FK_user_division">
       <End Role="division" EntitySet="division" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_eventt" Association="Self.FK_user_eventt">
+      <End Role="eventt" EntitySet="eventt" />
       <End Role="user" EntitySet="user" />
     </AssociationSet>
   </EntityContainer>

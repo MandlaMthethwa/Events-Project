@@ -20,7 +20,7 @@ Namespace Controllers
         ' GET: users
         Function Index(searchString As String) As ActionResult
             Dim email = User.Identity.GetUserName()
-            Dim users = From s In db.users.Where(Function(f) f.emailAddress = email) Select s
+            Dim users = From s In db.users.Where(Function(f) f.userEmail = email) Select s
             If Not String.IsNullOrEmpty(searchString) Then
                 users = users.Where(Function(s) s.firstName.ToUpper().Contains(searchString.ToUpper()) _
                                               Or s.lastName.ToUpper().Contains(searchString.ToUpper()))
@@ -39,10 +39,10 @@ Namespace Controllers
             End If
             Return View(user)
         End Function
-
         ' GET: users/Create
         Function Create() As ActionResult
             ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance")
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName")
             Return View()
         End Function
 
@@ -51,14 +51,21 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID")> ByVal user As user) As ActionResult
+        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
+
+
 
             If ModelState.IsValid Then
                 db.users.Add(user)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+
+
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+
+
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
             Return View(user)
         End Function
 
@@ -71,7 +78,9 @@ Namespace Controllers
             If IsNothing(user) Then
                 Return HttpNotFound()
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
+
             Return View(user)
         End Function
 
@@ -80,13 +89,15 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID")> ByVal user As user) As ActionResult
+        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(user).State = EntityState.Modified
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "eventType", user.divisionID)
+            ViewBag.divisionID = New SelectList(db.divisions, "divisionID", "distance", user.divisionID)
+            ViewBag.eventID = New SelectList(db.eventts, "eventID", "eventName", user.eventID)
+
             Return View(user)
         End Function
 
