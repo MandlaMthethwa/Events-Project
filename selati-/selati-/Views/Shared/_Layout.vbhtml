@@ -36,10 +36,11 @@
             <ul class="main-nav js--main-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                @If User.Identity.GetUserName() = "admin@pronto.ac.za" Then
+                
+                @*@If User.Identity.GetUserName() = "admin@pronto.ac.za" Then*@
                     @<li><a href=" @Url.Action("homePage", "Admins")">Manage Here</a></li>
-                End If
-                @If Request.IsAuthenticated And User.Identity.GetUserName() <> "admin@pronto.ac.za" Then
+                @*End If*@
+                @*@If Request.IsAuthenticated And User.Identity.GetUserName() <> "admin@pronto.ac.za" Then*@
 
 
                     @<li>@Html.ActionLink("Events", "Index", "Eventts")</li>
@@ -51,7 +52,7 @@
                         </ul>
                     </li>
                     @<li>@Html.ActionLink("Your Participants", "Index", "Users")</li>
-                End If
+                @*End If*@
             </ul>
 
 
