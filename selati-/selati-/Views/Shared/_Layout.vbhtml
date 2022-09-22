@@ -34,25 +34,24 @@
 
 
             <ul class="main-nav js--main-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                
                 @*@If User.Identity.GetUserName() = "admin@pronto.ac.za" Then*@
-                    @<li><a href=" @Url.Action("homePage", "Admins")">Manage Here</a></li>
+                <li><a href=" @Url.Action("homePage", "Admins")">Manage Here</a></li>
                 @*End If*@
-                @*@If Request.IsAuthenticated And User.Identity.GetUserName() <> "admin@pronto.ac.za" Then*@
+                @If Request.IsAuthenticated Then @*And User.Identity.GetUserName() <> "admin@pronto.ac.za"*@ 
 
 
-                    @<li>@Html.ActionLink("Events", "Index", "Eventts")</li>
-                    @<li>
-                        <a href="#">Results</a>
-                        <ul>
-                            <li>@Html.ActionLink("My Results", "Index", "Results") </li>
-                            <li>@Html.ActionLink("All Results", "allResults", "Results") </li>
-                        </ul>
-                    </li>
-                    @<li>@Html.ActionLink("Your Participants", "Index", "Users")</li>
-                @*End If*@
+                @<li>@Html.ActionLink("Events", "Index", "Eventts")</li>
+                @<li>
+                    <a href="#">Results</a>
+                    <ul>
+                        <li>@Html.ActionLink("My Results", "Index", "Results") </li>
+                        <li>@Html.ActionLink("All Results", "allResults", "Results") </li>
+                    </ul>
+                </li>
+                @<li>@Html.ActionLink("Your Participants", "Index", "Users")</li>
+                End If
             </ul>
 
 
