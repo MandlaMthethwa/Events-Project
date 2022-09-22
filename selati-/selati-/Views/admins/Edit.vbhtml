@@ -59,6 +59,20 @@ End Code
             @Html.ValidationMessageFor(Function(model) model.userEmail, "", New With {.class = "text-danger"})
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(Function(model) model.category, htmlAttributes:=New With {.class = "col span-1-of-3"})
+        <div class="row">
+            <select class="form-control col span-2-of-3" wire:model="category" id="category" name="category">
+                <option value=" ">-- Select Category --</option>
+
+                <option value="<17">< 17</option>
+                <option value="18-24">18 - 24</option>
+                <option value="25-31">25 - 31</option>
+                <option value="32+">32 +</option>
+            </select>
+            @Html.ValidationMessageFor(Function(model) model.category, "", New With {.class = "text-danger"})
+        </div>
+    </div>
 
 
     <div class="form-group">
@@ -188,10 +202,10 @@ End Code
         </div>
     </div>
     <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-default" />
-            <button class="btn button-back">
-                @Html.ActionLink("Back", "Index")
-            </button>
+        <input type="submit" value="Save" class="btn btn-default" />
+        <button class="btn button-back">
+            @Html.ActionLink("Back", "Index")
+        </button>
     </div>
 </div>
 End Using

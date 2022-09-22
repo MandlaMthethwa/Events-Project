@@ -51,7 +51,7 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
+        Function Create(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,category,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
 
 
 
@@ -89,7 +89,7 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
+        Function Edit(<Bind(Include:="userID,firstName,lastName,initials,IDNumber,emailAddress,userEmail,category,medicalAidName,medicalAidNumber,clubName,province,town,regNo,tShirt,tsbPers,tempNo,tipe,bet,paid,receiptNo,depDate,divisionID,eventID")> ByVal user As user) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(user).State = EntityState.Modified
                 db.SaveChanges()

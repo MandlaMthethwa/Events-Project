@@ -116,7 +116,8 @@ Partial Public Class user
     <DisplayName("User Email Address")>
     <DataType(DataType.EmailAddress)>
     Public Property userEmail As String
-
+    <DisplayName("Category")>
+    Public Property category As String
 
     <DisplayName("Medical Aid Name")>
     Public Property medicalAidName As String
@@ -130,7 +131,7 @@ Partial Public Class user
     Public Property town As String
     <DisplayName("Registration Number")>
     Public Property regNo As Nullable(Of Integer)
-    <DisplayName("Have a T-shirt?")>
+    <DisplayName("T-shirt Size")>
     Public Property tShirt As String
     <DisplayName("tsb Person")>
     Public Property tsbPers As String

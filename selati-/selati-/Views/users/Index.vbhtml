@@ -30,6 +30,9 @@ End Using
             @Html.DisplayNameFor(Function(model) model.IDNumber)
         </th>
         <th>
+            @Html.DisplayNameFor(Function(model) model.category)
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.medicalAidName)
         </th>
         <th>
@@ -43,7 +46,7 @@ End Using
             @Html.DisplayNameFor(Function(model) model.town)
         </th>
         <th>
-             Event  
+            Event
         </th>
         <th>Price</th>
 
@@ -64,6 +67,9 @@ End Using
         @Html.DisplayFor(Function(modelItem) item.IDNumber)
     </td>
     <td>
+        @Html.DisplayFor(Function(modelItem) item.category)
+    </td>
+    <td>
         @Html.DisplayFor(Function(modelItem) item.medicalAidName)
     </td>
     <td>
@@ -82,14 +88,16 @@ End Using
 
     </td>
     <td>
-        
-       R @Html.DisplayFor(Function(modelItem) item.division.amount) 
+
+        R @Html.DisplayFor(Function(modelItem) item.division.amount)
 
     </td>
 
-    <td> <button class="btn button-view">
-         Add to checkout
-         </button></td>
+    <td>
+        <button class="btn button-view">
+            Add to checkout
+        </button>
+    </td>
 </tr>
     Next
 

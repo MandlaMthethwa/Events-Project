@@ -23,8 +23,7 @@ End Code
 
 
 
-
-    
+    <!--Thirst event-->
     <tr>
         <td>
             2
@@ -39,6 +38,9 @@ End Code
             <button class="button-add">@Html.ActionLink("View Result", "thirstResults")</button>
         </td>
     </tr>
+    
+
+    <!--Bolders Marathon-->
     <tr>
 
         <td>
@@ -53,9 +55,8 @@ End Code
         <td>
             <button class="button-add">@Html.ActionLink("View Result", "boldersResults")</button>
         </td>
-        </tr>
+    </tr>
 
 </table>
-
 
 <p> <a class="button-back" @Html.ActionLink("Back", "Index", "Home") </a></p>

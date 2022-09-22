@@ -1,4 +1,6 @@
-﻿@ModelType IEnumerable(Of selati_.result)
+﻿@ModelType PagedList.IPagedList(Of selati_.result)
+@Imports PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @Code
     ViewData("Title") = "Manage Results"
     Layout = "~/Views/Shared/_Layout.vbhtml"
@@ -15,56 +17,57 @@ End Code
 </p>
 @Using Html.BeginForm()
     @<p>
-    Find by First Name(s) or Surname: @Html.TextBox("SearchString")
-    <input type="submit" value="Search" />
-    <button class="btn button-back">
-        @Html.ActionLink("Refresh", "adminIndex")
-    </button>
-</p>
+        Find by First Name(s) or Surname: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+        <button class="btn button-back">
+            @Html.ActionLink("Refresh", "adminIndex")
+        </button>
+    </p>
 End Using
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(Function(model) model.lastName)
+            Last Name
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.firstName)
+            First Name
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.emailAddress)
+            Email Adddress
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.batch)
+            Batch
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.gender)
+            Gender
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.class)
+            Class
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.raceNumber)
+            Race number
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.position)
+            Position
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.posGen)
+            Pos gen
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.category)
+            Category
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.posCat)
+            Pos cat
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.status)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.time)
+            Time
         </th>
+
         <th>
-            @Html.DisplayNameFor(Function(model) model.eventt.eventName)
+            Event name
         </th>
 
         <th> Action</th>
@@ -123,3 +126,7 @@ End Using
     Next
 
 </table>
+Page @IIf(Model.PageCount < Model.PageNumber, 0, Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, Function(page) Url.Action("adminIndex",
+                                        New With {page, .sortOrder = ViewBag.CurrentSort, .currentFilter = ViewBag.CurrentFilter}))

@@ -1,4 +1,5 @@
 ﻿@ModelType selati_.user
+
 @Imports Microsoft.AspNet.Identity
 
 @Code
@@ -184,7 +185,8 @@ End Code
     <!--CONTACT SECTION-->
     <section class="section-form">
         <div class="row">
-            <h2>Let's host your next event</h2>
+            <h2>Let's advertise your next event</h2><br />
+            <h3 style="text-align:center"> Enter your details below and we will get right back to you ASAP!</h3>
         </div>
 
         <div class="row">
@@ -215,14 +217,6 @@ End Code
                 </div>
 
 
-                <div class="row">
-                    <div class="col span-1-of-3">
-                        <label>Event Discription</label>
-                    </div>
-                    <div class="col span-2-of-3">
-                        <textarea name="message" placeholder="Enter discription"></textarea>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col span-1-of-3">
                         <label>&nbsp;</label>

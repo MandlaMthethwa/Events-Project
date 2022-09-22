@@ -63,6 +63,7 @@
     <Property Name="IDNumber" Type="varchar" MaxLength="13" Nullable="false" />
     <Property Name="emailAddress" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="userEmail" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="medicalAidName" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="medicalAidNumber" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="clubName" Type="varchar" MaxLength="20" />

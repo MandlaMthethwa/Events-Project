@@ -24,11 +24,15 @@ End Code
             @Html.DisplayNameFor(Function(model) model.eventType)
         </th>
         <th>
+            @Html.DisplayNameFor(Function(model) model.amount)
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.eventt.eventName)
         </th>
         <th>
             @Html.DisplayNameFor(Function(model) model.company.companyName)
         </th>
+
         <th>
             Action
         </th>
@@ -44,6 +48,9 @@ End Code
     </td>
     <td>
         @Html.DisplayFor(Function(modelItem) item.eventType)
+    </td>
+    <td>
+       R @Html.DisplayFor(Function(modelItem) item.amount)
     </td>
     <td>
         @Html.DisplayFor(Function(modelItem) item.eventt.eventName)

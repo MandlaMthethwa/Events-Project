@@ -67,6 +67,7 @@
           <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
           <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
           <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="category" ColumnName="category" />
           <ScalarProperty Name="medicalAidName" ColumnName="medicalAidName" />
           <ScalarProperty Name="medicalAidNumber" ColumnName="medicalAidNumber" />
           <ScalarProperty Name="clubName" ColumnName="clubName" />

@@ -65,6 +65,20 @@ End Code
             <input type="email" name="userEmail" model="userEmail" id="userEmail" placeholder="Enter account user email Address" required>
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(Function(model) model.category, htmlAttributes:=New With {.class = "col span-1-of-3"})
+        <div class="row">
+            <select class="form-control" wire:model="category" id="category" name="category">
+                <option value=" ">-- Select Category --</option>
+
+                <option value="<17">< 17</option>
+                <option value="18-24">18 - 24</option>
+                <option value="25-31">25 - 31</option>
+                <option value="32+">32 +</option>
+            </select>
+            @Html.ValidationMessageFor(Function(model) model.category, "", New With {.class = "text-danger"})
+        </div>
+    </div>
 
     <div class="row">
         <div class="col span-1-of-3">
@@ -119,12 +133,20 @@ End Code
             <input type="text" name="regNo" model="regNo" id="regNo" placeholder="Enter Participant Registration Number" required>
         </div>
     </div>
-    <div class="row">
-        <div class="col span-1-of-3">
-            <label for="tShirt">T-shirt Size</label>
-        </div>
-        <div class="col span-2-of-3">
-            <input type="text" name="tShirt" model="tShirt" id="tShirt" placeholder="Enter T-shirt size if avilable" required>
+    <div class="form-group">
+        @Html.LabelFor(Function(model) model.tShirt, htmlAttributes:=New With {.class = "col span-1-of-3"})
+        <div class="row">
+            <select class="col span-2-of-3" wire:model="tShirt" id="tShirt" name="tShirt">
+                <option value=" ">-- Select T-shirt Size(Optional) --</option>
+
+                <option value="XS"> XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL"> XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+            @Html.ValidationMessageFor(Function(model) model.category, "", New With {.class = "text-danger"})
         </div>
     </div>
     <div class="row">
@@ -209,12 +231,12 @@ End Code
     </div>
 
     <div class="row">
-        
-            <input type="submit" value="Save" class="btn button-add" />
-            <button class="btn button-back">
-                @Html.ActionLink("Back", "Index")
-            </button>
-      
+
+        <input type="submit" value="Save" class="btn button-add" />
+        <button class="btn button-back">
+            @Html.ActionLink("Back", "Index")
+        </button>
+
     </div>
 </div>
 End Using

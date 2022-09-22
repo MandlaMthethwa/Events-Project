@@ -1,5 +1,6 @@
 ﻿@Code
     Layout = "~/Views/Shared/_Layout.vbhtml"
+    ViewData("Title") = "Boulders Marathon"
 End Code
 @Imports Microsoft.AspNet.Identity
 

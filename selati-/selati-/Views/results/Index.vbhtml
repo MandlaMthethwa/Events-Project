@@ -1,16 +1,20 @@
-﻿@ModelType IEnumerable(Of selati_.result)
+﻿@ModelType PagedList.IPagedList(Of selati_.result)
+@Imports PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-@Code
-    ViewData("Title") = "My Results"
-    Layout = "~/Views/Shared/_Layout.vbhtml"
-End Code
+    @Code
+        ViewData("Title") = "My Results"
+        Layout = "~/Views/Shared/_Layout.vbhtml"
 
-<h2 class="form-header">Results</h2>
+    End Code
+
+
+    <h2 class="form-header">Results</h2>
 <h3> How did you stack up against the other participants ?</h3>
 
 @Using Html.BeginForm()
-    @<p>
-    Find by First Name(s) or Surname: @Html.TextBox("SearchString")
+@<p>
+    Find by First Name(s) or Surname: @Html.TextBox("SearchString", TryCast(ViewBag.CurrentFilter, String))
     <input type="submit" value="Search" />
     <button class="btn button-back">
         @Html.ActionLink("Refresh", "Index")
@@ -19,45 +23,45 @@ End Code
 End Using
 
 <table class="table">
-    <tr>
+<tr>
+    <th>
+Last Name        </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.lastName)
+                First Name
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.firstName)
+            Batch   
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.batch)
+            Gender  
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.gender)
+            Class   
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.class)
+        Race number
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.raceNumber)
+            Position
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.position)
+        Pos gen 
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.posGen)
+            Category
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.category)
+            Pos cat 
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.posCat)
+            Status  
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.status)
+            Time 
         </th>
+       
         <th>
-            @Html.DisplayNameFor(Function(model) model.time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.eventt.eventName)
+        Event name
         </th>
 
 
@@ -65,52 +69,59 @@ End Using
 
     </tr>
 
-    @For Each item In Model
-        @<tr>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.lastName)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.batch)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.gender)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.class)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.raceNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.position)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.posGen)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.category)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.posCat)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.time)
-            </td>
-            <td>
-                @Html.DisplayFor(Function(modelItem) item.eventt.eventName)
-            </td>
+@For Each item In Model
+@<tr>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.lastName)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.firstName)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.batch)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.gender)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.class)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.raceNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.position)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.posGen)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.category)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.posCat)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.status)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.time)
+    </td>
+    <td>
+        @Html.DisplayFor(Function(modelItem) item.eventt.eventName)
+    </td>
 
 
-        </tr>
-    Next
+</tr>
+Next
 
 </table>
 
-<p ><a class="button-back" @Html.ActionLink("Back", "Index", "Home")</a> </p>
+
+Page @IIf(Model.PageCount < Model.PageNumber, 0 , Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, Function(page) Url.Action("Index", _
+    New With {page, .sortOrder = ViewBag.CurrentSort, .currentFilter = ViewBag.CurrentFilter}))
+
+
+<p> <a class="button-back" @Html.ActionLink("Back", "Index", "Home")</a> </p>

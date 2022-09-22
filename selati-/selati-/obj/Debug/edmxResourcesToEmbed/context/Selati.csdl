@@ -73,6 +73,7 @@
     <Property Name="IDNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="emailAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="userEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="medicalAidName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="medicalAidNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="clubName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />

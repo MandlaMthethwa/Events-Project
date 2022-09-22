@@ -9,6 +9,8 @@ Imports System.Web.Mvc
 Imports Microsoft.AspNet.Identity
 Imports PagedList
 Imports selati_
+Imports PagedList.Mvc
+
 
 Namespace Controllers
     Public Class resultsController
@@ -17,9 +19,19 @@ Namespace Controllers
         Private db As New Entities1
 
         ' GET: results
-        Function Index(searchString As String) As ActionResult
+        Function Index(ByVal sortOrder As String, ByVal currentFilter As String, ByVal searchString As String, ByVal page As Integer?) As ActionResult
+
+            ViewBag.CurrentSort = sortOrder
+            ViewBag.FirstNameSortParm = If(sortOrder = "first_name", "first_name_desc", "first_name")
+            ViewBag.LastNameSortParm = If(sortOrder = "last_name", "last_name_desc", "last_name")
+            ViewBag.PositionSortParm = If(sortOrder = "position", "position_desc", "position")
 
 
+            If searchString IsNot Nothing Then
+                page = 1
+            Else
+                searchString = currentFilter
+            End If
             ViewBag.CurrentFilter = searchString
             Dim email = User.Identity.GetUserName()
             Dim results = From s In db.results.Where(Function(f) f.emailAddress = email) Select s
@@ -28,18 +40,70 @@ Namespace Controllers
                                               Or s.lastName.ToUpper().Contains(searchString.ToUpper()))
             End If
 
-            Return View(results)
+            Select Case sortOrder
+                Case "first_name_desc"
+                    results = results.OrderByDescending(Function(s) s.firstName)
+                Case "first_name"
+                    results = results.OrderBy(Function(s) s.firstName)
+                Case "last_name_desc"
+                    results = results.OrderByDescending(Function(s) s.lastName)
+                Case "last_name"
+                    results = results.OrderBy(Function(s) s.lastName)
+                Case "position"
+                    results = results.OrderBy(Function(s) s.position)
+                Case "position_desc"
+                    results = results.OrderByDescending(Function(s) s.position)
+                Case Else
+                    results = results.OrderBy(Function(s) s.lastName)
+            End Select
+
+            Dim pageSize As Integer = 3
+            Dim pageNumber As Integer = (If(page, 1))
+            Return View(results.ToPagedList(pageNumber, pageSize))
         End Function
 
-        Function adminIndex(searchString As String) As ActionResult
-            Dim results = From f In db.results Select f
+        Function adminIndex(ByVal sortOrder As String, ByVal currentFilter As String, ByVal searchString As String, ByVal page As Integer?) As ActionResult
+
+            ViewBag.CurrentSort = sortOrder
+            ViewBag.FirstNameSortParm = If(sortOrder = "first_name", "first_name_desc", "first_name")
+            ViewBag.LastNameSortParm = If(sortOrder = "last_name", "last_name_desc", "last_name")
+            ViewBag.PositionSortParm = If(sortOrder = "position", "position_desc", "position")
+
+
+            If searchString IsNot Nothing Then
+                page = 1
+            Else
+                searchString = currentFilter
+            End If
+            ViewBag.CurrentFilter = searchString
+            Dim email = User.Identity.GetUserName()
+            Dim results = From s In db.results Select s
             If Not String.IsNullOrEmpty(searchString) Then
                 results = results.Where(Function(s) s.firstName.ToUpper().Contains(searchString.ToUpper()) _
                                               Or s.lastName.ToUpper().Contains(searchString.ToUpper()))
             End If
-            Return View(results.ToList())
-        End Function
 
+            Select Case sortOrder
+                Case "first_name_desc"
+                    results = results.OrderByDescending(Function(s) s.firstName)
+                Case "first_name"
+                    results = results.OrderBy(Function(s) s.firstName)
+                Case "last_name_desc"
+                    results = results.OrderByDescending(Function(s) s.lastName)
+                Case "last_name"
+                    results = results.OrderBy(Function(s) s.lastName)
+                Case "position"
+                    results = results.OrderBy(Function(s) s.position)
+                Case "position_desc"
+                    results = results.OrderByDescending(Function(s) s.position)
+                Case Else
+                    results = results.OrderBy(Function(s) s.lastName)
+            End Select
+
+            Dim pageSize As Integer = 3
+            Dim pageNumber As Integer = (If(page, 1))
+            Return View(results.ToPagedList(pageNumber, pageSize))
+        End Function
         Function allResults() As ActionResult
 
             Return View()

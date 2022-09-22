@@ -49,7 +49,7 @@ End Code
         @Html.LabelFor(Function(model) model.gender, htmlAttributes:=New With {.class = "col span-1-of-3"})
         <div class="row">
             <select class="form-control" wire:model="gender" id="gender" name="gender">
-                <option value="#">-- Select Gender --</option>
+                <option value=" ">-- Select Gender --</option>
 
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -94,7 +94,7 @@ End Code
         @Html.LabelFor(Function(model) model.category, htmlAttributes:=New With {.class = "col span-1-of-3"})
         <div class="row">
             <select class="form-control" wire:model="category" id="category" name="category">
-                <option value="#">-- Select Category --</option>
+                <option value=" ">-- Select Category --</option>
 
                 <option value="<17">< 17</option>
                 <option value="18-24">18 - 24</option>
@@ -117,7 +117,7 @@ End Code
         @Html.LabelFor(Function(model) model.status, htmlAttributes:=New With {.class = "col span-1-of-3"})
         <div class="row">
             <select class="form-control" wire:model="status" id="status" name="status">
-                <option value="#">-- Select Satus --</option>
+                <option value=" ">-- Select Status --</option>
                 <option value="Finished">Finished</option>
                 <option value="On going">On going</option>
             </select>
@@ -141,10 +141,7 @@ End Code
             </div>
 
         </div>
-
-
-
-        <div class="form-group">
+     <div class="form-group">
 
             <input type="submit" value="Save" class="button-add" />
             <button class="button-back">

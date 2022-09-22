@@ -68,6 +68,7 @@
           <Property Name="IDNumber" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="emailAddress" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="userEmail" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="medicalAidName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="medicalAidNumber" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="clubName" Type="varchar" MaxLength="20" />
@@ -266,6 +267,7 @@
           <Property Name="IDNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emailAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="medicalAidName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="medicalAidNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="clubName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -460,6 +462,7 @@
                 <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
                 <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
                 <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="medicalAidName" ColumnName="medicalAidName" />
                 <ScalarProperty Name="medicalAidNumber" ColumnName="medicalAidNumber" />
                 <ScalarProperty Name="clubName" ColumnName="clubName" />

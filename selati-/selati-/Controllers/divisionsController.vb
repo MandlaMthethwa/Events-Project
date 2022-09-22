@@ -49,7 +49,7 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="divisionID,distance,eventTime,eventType,eventID,companyID")> ByVal division As division) As ActionResult
+        Function Create(<Bind(Include:="divisionID,distance,eventTime,eventType,amount,eventID,companyID")> ByVal division As division) As ActionResult
             If ModelState.IsValid Then
                 db.divisions.Add(division)
                 db.SaveChanges()
@@ -79,7 +79,7 @@ Namespace Controllers
         'more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="divisionID,distance,eventTime,eventType,eventID,companyID")> ByVal division As division) As ActionResult
+        Function Edit(<Bind(Include:="divisionID,distance,eventTime,eventType,amount,eventID,companyID")> ByVal division As division) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(division).State = EntityState.Modified
                 db.SaveChanges()

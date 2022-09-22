@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Pronto</title>
+    <title>@ViewBag.Title - Pronto </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
    
@@ -15,7 +15,6 @@
 
         <ul style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),Url(../images/logoback.jpg);">
 
-            @*<li> <img src="../images/logo.png" alt=" Let move" class="logo"></li>*@
             <li>
                 @If Request.IsAuthenticated Then
                     @<div class="user" style="color:white">
@@ -28,11 +27,13 @@
             </li>
             <li><h2 style="color: lightblue"> "Motivation is what gets you started. Habit is what keeps you going."</h2></li>
         </ul>
-        
-            
+
+
         <nav>
 
-            <ul>
+
+
+            <ul class="main-nav js--main-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
                 @If User.Identity.GetUserName() = "admin@pronto.ac.za" Then
@@ -57,7 +58,7 @@
             @If Request.IsAuthenticated Then
                 @Using Html.BeginForm("LogOff", "Account", FormMethod.Post, New With {.id = "logoutForm", .Class = "menu navbar-right"})
                     @Html.AntiForgeryToken()
-                    @<ul>
+                    @<ul class="main-nav">
                         <li>
                             @Html.ActionLink("Update your password ", "ChangePassword", "Manage")
                         </li>
@@ -73,6 +74,7 @@
             End If
 
         </nav>
+        <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
     </div>
 
 
@@ -91,16 +93,15 @@
             <div class="col span-1-of-2">
                 <ul class="footer-nav">
                     <li><a href="@Url.Action("About", "Home")">About us</a></li>
-                  
+                    <li><a href="@Url.Action("Contact", "Home")">Contacts</a></li>
+
                     <li>@Html.ActionLink("Events", "Index", "Eventts")</li>
-                    <li><a href="#">Results</a></li>
 
                 </ul>
             </div>
             
         </div>
         <div class="row">
-           
             <p>&copy; @DateTime.Now.Year Copyright All rights Reseverd</p>            
         </div>
     </footer>
